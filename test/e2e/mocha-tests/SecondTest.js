@@ -1,10 +1,19 @@
 const { Builder, By, Key } = require('selenium-webdriver')
 const assert = require('assert')
+const firefox = require('selenium-webdriver/firefox')
+const chrome = require('selenium-webdriver/chrome')
+
+const screen = {
+  width: 640,
+  height: 480
+}
+
+let driver
 // eslint-disable-next-line no-undef
-describe('Browser test', function () {
+describe('Browser test - HEADLESS MODE', function () {
   // eslint-disable-next-line no-undef
-  xit('Firefox browser test', async function () {
-    const driver = await new Builder().forBrowser('firefox').build()
+  it('Firefox browser test - HEADLESS', async function () {
+    driver = await new Builder().forBrowser('firefox').setFirefoxOptions(new firefox.Options().headless().windowSize(screen)).build()
     await driver.get('https://google.com')
     await driver.findElement(By.id('L2AGLb')).click()
     await driver.sleep(1000)
@@ -16,8 +25,8 @@ describe('Browser test', function () {
   })
 
   // eslint-disable-next-line no-undef
-  it('Chrome browser test FAILED test', async function () {
-    const driver = await new Builder().forBrowser('chrome').build()
+  it('Chrome browser test - HEADLESS', async function () {
+    driver = await new Builder().forBrowser('chrome').setChromeOptions(new chrome.Options().headless().windowSize(screen)).build()
     await driver.get('https://google.com')
     await driver.findElement(By.id('L2AGLb')).click()
     await driver.sleep(1000)
@@ -25,6 +34,10 @@ describe('Browser test', function () {
     await driver.sleep(1000)
     const text = await driver.findElement(By.id('pTwnEc')).getText()
     assert.strictEqual(text, 'Todo\nImágenes\nVídeos\nNoticias\nShopping\nMás\nHerramientas')
+  })
+
+  // eslint-disable-next-line no-undef
+  after(async function () {
     await driver.quit()
   })
 })
