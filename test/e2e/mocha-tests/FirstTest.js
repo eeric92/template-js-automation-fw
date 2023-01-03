@@ -5,10 +5,12 @@ import { assert } from "chai";
 
 let driver;
 
-describe("Browser test - NO HEADLESS MODE", function () {
-    it("Firefox browser test - NO HEADLESS", async function () {
-        driver = await DriverManager.driverFirefoxInitialization();
-        await driver.get("https://google.com");
+describe("DESCRIBE 1", function () {
+    beforeEach(async () => {
+        driver = await DriverManager.driverInitialization();
+    });
+
+    it("TEST 1", async function () {
         await driver.findElement(By.id("L2AGLb")).click();
         await driver.sleep(1000);
         await driver
@@ -26,9 +28,7 @@ describe("Browser test - NO HEADLESS MODE", function () {
         );
     });
 
-    it("Chrome browser test - NO HEADLESS", async function () {
-        driver = await DriverManager.driverChromeInitialization();
-        await driver.get("https://google.com");
+    it("TEST 2", async function () {
         await driver.findElement(By.id("L2AGLb")).click();
         await driver.sleep(1000);
         await driver
