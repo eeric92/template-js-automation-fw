@@ -24,5 +24,6 @@
         "eslint-config-prettier": "^8.5.0",
         "prettier": "^2.8.1",
         "standard": "^16.0.3"
-    }
+    },
+    "type": "module"
 }

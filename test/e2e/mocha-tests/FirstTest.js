@@ -1,11 +1,13 @@
 /* eslint-disable no-undef */
-const { Builder, By, Key } = require("selenium-webdriver");
-const assert = require("assert");
+import { DriverManager } from "../../manager/DriverManager.js";
+import { By, Key } from "selenium-webdriver";
+import { assert } from "chai";
 
 let driver;
+
 describe("Browser test - NO HEADLESS MODE", function () {
     it("Firefox browser test - NO HEADLESS", async function () {
-        driver = await new Builder().forBrowser("firefox").build();
+        driver = await DriverManager.driverFirefoxInitialization();
         await driver.get("https://google.com");
         await driver.findElement(By.id("L2AGLb")).click();
         await driver.sleep(1000);
@@ -22,11 +24,10 @@ describe("Browser test - NO HEADLESS MODE", function () {
             text,
             "Todo\nImágenes\nVídeos\nNoticias\nShopping\nMás\nHerramientas"
         );
-        await driver.quit();
     });
 
     it("Chrome browser test - NO HEADLESS", async function () {
-        driver = await new Builder().forBrowser("chrome").build();
+        driver = await DriverManager.driverChromeInitialization();
         await driver.get("https://google.com");
         await driver.findElement(By.id("L2AGLb")).click();
         await driver.sleep(1000);
@@ -45,7 +46,7 @@ describe("Browser test - NO HEADLESS MODE", function () {
         );
     });
 
-    after(async function () {
+    afterEach(async () => {
         await driver.quit();
     });
 });

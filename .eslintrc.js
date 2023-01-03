@@ -9,6 +9,7 @@ module.exports = {
     overrides: [],
     parserOptions: {
         ecmaVersion: 12,
+        sourceType: "module"
     },
     rules: {
         indent: "off",
