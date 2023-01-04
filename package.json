@@ -19,7 +19,7 @@
         "selenium-webdriver": "^4.7.1"
     },
     "devDependencies": {
-        "@cucumber/cucumber": "^8.8.0",
+        "@cucumber/cucumber": "^8.10.0",
         "eslint": "^7.13.0",
         "eslint-config-prettier": "^8.5.0",
         "prettier": "^2.8.1",
