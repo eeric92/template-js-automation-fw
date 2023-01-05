@@ -10,10 +10,14 @@ export class GoogleLandingActions {
         genericActions = new GenericActions(this.driver);
     }
 
-    async acceptTermsAndConditions() {
-        await genericActions.clickOn(
-            googleLandingLocators.acceptTermsAndConditionsButton
-        );
+    async acceptTermsAndConditionsIfDisplayed() {
+        try {
+            await genericActions.clickOn(
+                googleLandingLocators.acceptTermsAndConditionsButton
+            );
+        } catch (e) {
+            // IGNORE
+        }
     }
 
     async introduceTextInSearchBarAndPressReturn(text) {

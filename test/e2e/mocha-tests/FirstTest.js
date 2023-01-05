@@ -21,7 +21,7 @@ describe("DESCRIBE 1", function () {
     });
 
     it("TEST 1", async function () {
-        await googleLandingActions.acceptTermsAndConditions();
+        await googleLandingActions.acceptTermsAndConditionsIfDisplayed();
         await googleLandingActions.introduceTextInSearchBarAndPressReturn(
             "Hello World"
         );
@@ -34,24 +34,19 @@ describe("DESCRIBE 1", function () {
     });
 
     it("TEST 2", async function () {
-        await driver.findElement(By.id("L2AGLb")).click();
+        await googleLandingActions.acceptTermsAndConditionsIfDisplayed();
+        await googleLandingActions.introduceTextInSearchBarAndPressReturn(
+            "Hello World"
+        );
         await driver.sleep(1000);
-        await driver
-            .findElement(
-                By.xpath(
-                    "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input"
-                )
-            )
-            .sendKeys("patata", Key.RETURN);
-        await driver.sleep(1000);
-        const text = await driver.findElement(By.id("pTwnEc")).getText();
+
         assert.strictEqual(
-            text,
+            await googleSearchActions.getElementsInSearchBar(),
             "Todo\nImágenes\nVídeos\nNoticias\nShopping\nMás\nHerramientas"
         );
     });
 
-    afterEach(async () => {
+    after(async () => {
         await driver.quit();
     });
 });
