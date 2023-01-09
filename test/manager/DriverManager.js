@@ -2,6 +2,7 @@ import { Builder } from "selenium-webdriver";
 import fs from "fs";
 import firefox from "selenium-webdriver/firefox.js";
 import chrome from "selenium-webdriver/chrome.js";
+import { logger } from "../logger/index.js";
 
 export class DriverManager {
     static async driverFirefoxInitialization() {
@@ -52,25 +53,25 @@ export class DriverManager {
 
         if (browser === "FIREFOX" && headlessMode === "FALSE") {
             driver = await this.driverFirefoxInitialization();
-            console.log(
-                "[DriverManager] - FIREFOX driver in Headless mode FALSE has been initialized"
+            logger.info(
+                "FIREFOX driver in Headless mode FALSE has been initialized"
             );
         } else if (browser === "FIREFOX" && headlessMode === "TRUE") {
             driver = await this.driverFirefoxHeadlessInitialization();
-            console.log(
-                "[DriverManager] - FIREFOX driver in Headless mode TRUE has been initialized"
+            logger.info(
+                "FIREFOX driver in Headless mode TRUE has been initialized"
             );
         }
 
         if (browser === "CHROME" && headlessMode === "FALSE") {
             driver = await this.driverChromeInitialization();
-            console.log(
-                "[DriverManager] - CHROME driver in Headless mode FALSE has been initialized"
+            logger.info(
+                "CHROME driver in Headless mode FALSE has been initialized"
             );
         } else if (browser === "CHROME" && headlessMode === "TRUE") {
             driver = await this.driverChromeHeadlessInitialization();
-            console.log(
-                "[DriverManager] - CHROME driver in Headless mode TRUE has been initialized"
+            logger.info(
+                "CHROME driver in Headless mode TRUE has been initialized"
             );
         }
 

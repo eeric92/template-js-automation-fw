@@ -11,9 +11,15 @@ export class GoogleLandingActions {
 
     async acceptTermsAndConditionsIfDisplayed() {
         try {
-            await genericActions.clickOn(
-                googleLandingLocators.acceptTermsAndConditionsButton
-            );
+            if (
+                await genericActions.isElementDisplayed(
+                    googleLandingLocators.acceptTermsAndConditionsButton
+                )
+            ) {
+                await genericActions.clickOn(
+                    googleLandingLocators.acceptTermsAndConditionsButton
+                );
+            }
         } catch (e) {
             // IGNORE
         }
