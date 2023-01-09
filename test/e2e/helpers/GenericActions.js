@@ -1,4 +1,4 @@
-import { until } from "selenium-webdriver";
+import { Key, until } from "selenium-webdriver";
 
 export class GenericActions {
     constructor(driver) {
@@ -8,5 +8,10 @@ export class GenericActions {
     async clickOn(element) {
         await this.driver.wait(until.elementLocated(element), 10000);
         await this.driver.findElement(element).click();
+    }
+
+    async sendTextAndPressReturn(element, text) {
+        await this.driver.wait(until.elementLocated(element), 10000);
+        await this.driver.findElement(element).sendKeys(text, Key.RETURN);
     }
 }
