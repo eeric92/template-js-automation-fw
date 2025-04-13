@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import { DriverManager } from "../../manager/DriverManager.js";
 import { assert } from "chai";
 import { GoogleLandingActions } from "../page-objects/actions/GoogleLandingActions.js";
 import { GoogleSearchActions } from "../page-objects/actions/GoogleSearchActions.js";
+import { DriverManager } from "../manager/DriverManager.js";
 
 let driver;
 let googleLandingActions;
