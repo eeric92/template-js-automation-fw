@@ -1,6 +1,5 @@
 import { Key, until } from "selenium-webdriver";
-import { logger } from "../../logger/index.js";
-import { locators as googleLandingLocators } from "../page-objects/locators/GoogleLandingLocators.js";
+import { logger } from "../logger/index.js";
 
 export class GenericActions {
     constructor(driver) {

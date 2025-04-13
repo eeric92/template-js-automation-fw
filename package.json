@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha --no-timeouts 'test/e2e/mocha-tests' --reporter mochawesome --reporter-options reportDir=reports/mocha-awesome-report,reportFilename=TestResults",
-        "test-parallel": "mocha --no-timeouts 'test/e2e/mocha-tests' --parallel --reporter mochawesome --require mochawesome/register --reporter-options reportDir=reports/mocha-awesome-report,reportFilename=TestResults",
+        "test": "mocha --no-timeouts 'test/e2e-selenium/e2e-tests' --reporter mochawesome --reporter-options reportDir=reports/mocha-awesome-report,reportFilename=TestResults",
+        "test-parallel": "mocha --no-timeouts 'test/e2e-selenium/e2e-tests' --parallel --reporter mochawesome --require mochawesome/register --reporter-options reportDir=reports/mocha-awesome-report,reportFilename=TestResults",
         "prettier": "prettier --write .",
         "lint": "eslint --fix . --ext .js",
         "logger": "NODE_ENV=fw node test/logger/MainLogger.js"
